@@ -10,30 +10,52 @@ var global = window || GLOBAL;
 global.bruhdash = {
 
   // returns the first element of an array
-  first: function () {
-      
+  first: function first(arr) {
+      return arr[0];
   },
 
   // returns the last element of an array
-  last: function () {
-
+  last: function last(arr) {
+    let endPoint = arr.length - 1;
+      return arr[endPoint];
   },
 
   // returns the index of the first matching element from left to right
-  indexOf: function () {
-
+  indexOf: function (arr, num, marker) {
+    if(marker && marker < arr.length){
+        length = marker;
+    } else {
+      length = arr.length;
+    }
+    for(var i = 0; i < length; i++){
+      if(arr[i] === num){
+        return i;
+      }
+    }
+    return -1;
   },
 
-  // returns the index of the first matching element from left to right
-  lastIndexof: function () {
-
+  // returns the index of the last matching element from left to right
+  lastIndexof: function (arr, num, marker) {
+    if(marker && marker < arr.length){
+        length = marker;
+    } else {
+      length = arr.length;
+    }
+    index = -1;
+    for(var i = 0; i < length; i++){
+      if(arr[i] === num){
+        index = i;
+      }
+    }
+    return index;
   },
 
   // returns an array with all elements except for the last element
   initial: function () {
 
   },
-  
+
   // returns an array with all falsey values removed
   compact: function() {
 
@@ -92,7 +114,7 @@ global.bruhdash = {
 
   /*******************
    *  STRETCH GOALS! *
-   *******************/ 
+   *******************/
 
   // creates an array of grouped elements
   zip: function () {
@@ -123,7 +145,7 @@ global.bruhdash = {
 
   /*************************
    *  SUPER STRETCH GOALS!  *
-   *************************/ 
+   *************************/
 
   // iterates over elements of a collection and returns all elements that the predicate returns truthy for
   // Note: this should work for arrays and objects
@@ -135,6 +157,6 @@ global.bruhdash = {
   // in the collection through an iteratee
   // Note: this should work for arrays and objects
   reduce: function() {
-    
+
   }
 };
