@@ -21,7 +21,7 @@ global.bruhdash = {
   },
 
   // returns the index of the first matching element from left to right
-  indexOf: function (arr, num, marker) {
+  indexOf: function indexOf(arr, num, marker) {
     if(marker && marker < arr.length){
         length = marker;
     } else {
@@ -36,13 +36,13 @@ global.bruhdash = {
   },
 
   // returns the index of the last matching element from left to right
-  lastIndexof: function (arr, num, marker) {
+  lastIndexOf: function lastIndexOf(arr, num, marker) {
     if(marker && marker < arr.length){
         length = marker;
     } else {
       length = arr.length;
     }
-    index = -1;
+    var index = -1;
     for(var i = 0; i < length; i++){
       if(arr[i] === num){
         index = i;
@@ -52,23 +52,52 @@ global.bruhdash = {
   },
 
   // returns an array with all elements except for the last element
-  initial: function () {
-
+  initial: function initial(arr) {
+    arr.pop();
+    return arr;
   },
 
   // returns an array with all falsey values removed
-  compact: function() {
-
+  compact: function compact(arr) {
+    var newArr = [];
+    for(var i = 0; i < arr.length; i++){
+      if( arr[i] ) {
+            newArr.push(arr[i]);
+        }
+    }
+    return newArr;
   },
 
   // creates a slice of an array from the start index up to but not including the end index
-  slice: function () {
+  slice: function slice(arr, start, end) {
 
+    if( (start < 0 || start >= arr.length) ||
+        (end < 0 || end >= arr.length) ){
+          return -1;
+        }
+
+    var newArr = [];
+    for(var i = start; i < end; i++){
+      newArr.push(arr[i]);
+    }
+    return newArr;
   },
 
   // returns a slice of array with n elements dropped from the beignning
-  drop: function(){
-
+  drop: function drop(arr, n) {
+    var i;
+    if( !(n) && !(n === 0) ){
+      i = 1;
+    } else if ( (n >= arr.length || n < 0) ){
+          return -1;
+    } else {
+      i = n;
+    }
+    var newArr = [];
+    for(i; i < arr.length; i++){
+      newArr.push(arr[i]);
+    }
+    return newArr;
   },
 
   // returns a slice of array with n elements dropped from the end
