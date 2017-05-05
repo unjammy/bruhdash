@@ -101,18 +101,45 @@ global.bruhdash = {
   },
 
   // returns a slice of array with n elements dropped from the end
-  dropRight: function() {
-
+  dropRight: function dropRight(arr, n) {
+    var i;
+    if( !(n) && !(n === 0) ){
+      n = 1;
+    } else if ( (n >= arr.length || n < 0) ){
+          return -1;
+    }
+    for(var i = 0; i < n; i++){
+      arr.pop();
+    }
+    return arr;
   },
 
   // creates a slice of an array with n elements taken from the beginning
-  take: function () {
-
+  take: function take(arr, n) {
+    if( !(n) && !(n === 0) ){
+      return [arr[0]];
+    } else if( n < 0 || n > arr.length ){
+      return arr;
+    }
+    var newArr = [];
+    for(var i = 0; i < n; i++){
+      newArr.push(arr[i]);
+    }
+    return newArr;
   },
 
   // creates a slice of an array with n elements taken from the end
-  takeRight: function () {
-
+  takeRight: function (arr ,n) {
+    if( !(n) && !(n === 0) ){
+      return [ arr[arr.length - 1] ];
+    } else if( n < 0 || n > arr.length ){
+      return arr;
+    }
+    var newArr = [];
+    for(var i = (arr.length - n); i < arr.length; i++){
+      newArr.push( arr[i] );
+    }
+    return newArr;
   },
 
   // fills elements of array with specified value from the start index
