@@ -129,7 +129,7 @@ global.bruhdash = {
   },
 
   // creates a slice of an array with n elements taken from the end
-  takeRight: function (arr ,n) {
+  takeRight: function takeRight(arr ,n) {
     if( !(n) && !(n === 0) ){
       return [ arr[arr.length - 1] ];
     } else if( n < 0 || n > arr.length ){
@@ -144,13 +144,22 @@ global.bruhdash = {
 
   // fills elements of array with specified value from the start index
   // up to but not including the end index
-  fill: function() {
-
+  fill: function fill(arr, value, start, end) {
+    if( !(start) || start > arr.length || start < 0 ){
+      var start = 0;
+    }
+    if( !(end) || end < 0 || end > arr.length){
+      var end = arr.length;
+    }
+    for(var i = start; i < end; i++){
+      arr[i] = value;
+    }
+    return arr;
   },
 
   // removes all given values from an array
-  pull: function () {
-
+  pull: function pull(arr, values) {
+    
   },
 
   // removes elements of an array corresponding to the given indices
