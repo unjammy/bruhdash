@@ -200,8 +200,16 @@ global.bruhdash = {
   },
 
   // creates an array excluding all the specified values
-  without: function() {
-
+  without: function without(arr, values) {
+    var newArr = [];
+    for(var i = 0; i < arr.length; i++){
+      for(var j = 0; j < values.length; j++){
+        if( arr[i] === values[j] ){
+          newArr.splice(arr[i]);
+        }
+      }
+    }
+    return newArr;
   },
 
   // returns an array with specified values excluded
