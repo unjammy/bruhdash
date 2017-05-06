@@ -159,12 +159,44 @@ global.bruhdash = {
 
   // removes all given values from an array
   pull: function pull(arr, values) {
-    
+
+    for(var i = 0; i < arr.length; i++){
+      for(var j = 0; j < values.length; j++){
+        if(arr[i] === values[j]){
+          arr.splice(i, 1 );
+        }
+      }
+    }
+    return arr;
   },
 
   // removes elements of an array corresponding to the given indices
-  pullAt: function () {
-
+  pullAt: function pullAt(arr, indexes) {
+    indexes.forEach(function (index){
+      arr[index] = false;
+    });
+    console.log(arr);
+    for(var i = 0; i < arr.length; i++){
+      if( !(arr[i]) ){
+        console.log("i found a false at..." + i);
+        spliced = arr.splice(i, 1);
+        console.log(spliced);
+      }
+    }
+    return arr;
+    /*
+     * This is a big ole mess...
+     * Hahaha...
+    for(var i = (arr.length-1); i >= 0; i--){
+      for(var j = (indexes.length - 1); j >= 0 && i === indexes[j] ; j--){
+          console.log("i found index..." + indexes[j] + "at..." + i);
+          spliced = arr.splice( i, (i+1) );
+          console.log("i took out..." + spliced[0]);
+          console.log("happy debugging...");
+      }
+    }
+    return arr;
+    */
   },
 
   // creates an array excluding all the specified values
